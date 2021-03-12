@@ -6,10 +6,10 @@ Tired of your boxes of photos or gigabytes of videos in your drives? Why not tur
 
 The secret is just make a scrap book your photos on our website and scan them with your EchoAR app, here is the magic. Your scanned photo will play a video of that amazing memory using AR technology.
 
-#______
+# ______
 
 ![EchoAR Dashboard](https://i.imgur.com/Dirg6xP.png)
 ![Website #1](https://i.imgur.com/7dJnRf3.jpg)
 ![Website #2](https://i.imgur.com/UrRGCol.jpg)
 
-#______
+# ______
