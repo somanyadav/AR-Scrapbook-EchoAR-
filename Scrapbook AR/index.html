@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>My Scrapbook of Memories</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+
+<!--Made for AMI-Hacks-2021-->
+<!-- horizontal -->
+
+<h1 class="heading">My <span class="underline--magical">Childhood</span> memories..</h1>
+<h2 class="subheading" style="color:#ff2e6d">You've just given birth to the tiniest bundle of joy and you can't wait to share her<br> with the world! We know you've already snapped hundreds of photos,<br> all you need to do is pick which quotes fit all your feels. </h2>
+
+
+<h4 style="color:white;">0-7 yrs</h4>
+<div class="flip">
+    <div class="front" style="background-image: url(https://i.imgur.com/0KOUKwH.png)">
+       <h1 class="text-shadow">BABY</hi>
+    </div>
+    <div class="back" style="background-image: url(https://i.imgur.com/z9X42yw.png)">
+       
+    </div>
+</div>
+<div class="flip">
+    <div class="front" style="background-image: url(https://i.imgur.com/wd83bIy.png)">
+       <h1 class="text-shadow">HOME</hi>
+    </div>
+    <div class="back" style="background-image: url(https://i.imgur.com/9Ppc8lD.png)">
+       
+    </div>
+</div>
+<div class="flip">
+    <div class="front" style="background-image: url(https://i.imgur.com/D6tfZB5.png)">
+       <h1 class="text-shadow">SMILE</hi>
+    </div>
+    <div class="back" style="background-image: url(https://i.imgur.com/D6tfZB5.png)">
+      
+    </div>
+</div>
+
+<br>
+<br>
+
+<!-- vertical -->
+  
+  <h2 class="subheading" style="color:#00ffff">It’s all kind of these profound things crashing <br>on you when your child arrives into the world. It’s like you’ve met your reason to live. </h2>
+</h2>
+
+  
+<h4 style="color:white;">7-12 yrs</h4>
+<div class="flip flip-vertical">
+    <div class="front" style="background-image: url(https://i.imgur.com/7mPPfyD.png)">
+       <h1 class="text-shadow">GAME</hi>
+    </div>
+    <div class="back" style="background-image: url(https://i.imgur.com/7mPPfyD.png)">
+       
+    </div>
+</div>
+<div class="flip flip-vertical">
+    <div class="front" style="background-image: url(https://i.imgur.com/v9l5AmG.png)">
+       
+	  <h1 class="text-shadow">BUBBLE</hi>
+    </div>
+    <div class="back" style="background-image: url(https://i.imgur.com/v9l5AmG.png)">
+      
+    </div>
+</div>
+<a href="https://i.imgur.com/qdOIEyg.png"><div class="flip ">
+    <div class="front" style="background-image: url(https://i.imgur.com/kIynnS4.png)">
+       <h1 class="text-shadow">FRIENDS</h1>
+    </div>
+    <div class="back" style="background-image: url(https://i.imgur.com/qdOIEyg.png)">
+     
+    </div>
+</div></a>
+<!-- partial -->
+  <script  src="./script.js"></script>
+  <script>// VARIABLES
+const magicalUnderlines = Array.from(document.querySelectorAll('.underline--magical'));
+
+const gradientAPI = 'https://gist.githubusercontent.com/wking-io/3e116c0e5675c8bcad8b5a6dc6ca5344/raw/4e783ce3ad0bcd98811c6531e40256b8feeb8fc8/gradient.json';
+
+// HELPER FUNCTIONS
+
+// 1. Get random number in range. Used to get random index from array.
+const randNumInRange = max => Math.floor(Math.random() * (max - 1));
+
+// 2. Merge two separate array values at the same index to 
+// be the same value in new array.
+const mergeArrays = (arrOne, arrTwo) => arrOne
+  .map((item, i) => `${item} ${arrTwo[i]}`)
+  .join(', ');
+
+// 3. Curried function to add a background to array of elms
+const addBackground = (elms) => (color) => {
+  elms.forEach(el => {
+    el.style.backgroundImage = color;
+  });
+}
+// 4. Function to get data from API
+const getData = async(url) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data.data;
+}
+
+// 5. Partial Application of addBackground to always apply 
+// background to the magicalUnderlines constant
+const addBackgroundToUnderlines = addBackground(magicalUnderlines);
+
+// GRADIENT FUNCTIONS
+
+// 1. Build CSS formatted linear-gradient from API data
+const buildGradient = (obj) => `linear-gradient(${obj.direction}, ${mergeArrays(obj.colors, obj.positions)})`;
+
+// 2. Get single gradient from data pulled in array and
+// apply single gradient to a callback function
+const applyGradient = async(url, callback) => {
+  const data = await getData(url);
+  const gradient = buildGradient(data[randNumInRange(data.length)]);
+  callback(gradient);
+}
+
+// RESULT
+applyGradient(gradientAPI, addBackgroundToUnderlines);</script>
+
+</body>
+</html>
